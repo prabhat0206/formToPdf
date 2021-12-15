@@ -40,14 +40,6 @@ const htmlToPdfBuffer = async (pathname, params) => {
   });
 };
 
-app.get("/", (req, res) => {
-  res.render("form", {
-    data: {
-      title: "Mr",
-    },
-  });
-});
-
 app.post("/sendPdfOnEmail", async (req, res) => {
   const data = req.body;
   const pdfFile = await htmlToPdfBuffer("views/index.ejs", {
