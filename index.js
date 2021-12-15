@@ -4,6 +4,7 @@ const ejs = require("ejs");
 const htmlPdf = require("html-pdf");
 const bodyParser = require("body-parser");
 const sendEmail = require("./mail");
+const cors = require("cors");
 require("dotenv").config();
 
 const app = express();
@@ -15,6 +16,11 @@ const port = 5000;
 // 3. NODE_PORT=587
 
 app.set("view engine", "ejs");
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 app.use(express.static(path.join(__dirname, "assets")));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
