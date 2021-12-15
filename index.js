@@ -57,6 +57,6 @@ app.post("/sendPdfOnEmail", async (req, res) => {
   });
 });
 
-app.listen(port, () => {
+app.listen(process.env.PORT, () => {
   console.log("listen on url http://localhost:" + port);
 });
