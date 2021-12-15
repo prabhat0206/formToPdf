@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Form</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <style>
+      html {
+        zoom: 0.5;
+      }
+      @page {
+        margin: 0;
+        size: letter;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        margin: auto;
+      }
+      .images {
+        display: flex;
+        justify-content: center;
+        float: left;
+      }
+      .img1 {
+        width: 400px;
+        margin: 50px 30px;
+      }
+      .sign {
+        margin-top: 50px;
+      }
+      .img2 {
+        width: 250px;
+        height: 80px;
+        margin: 30px 20px;
+      }
+      .header {
+        display: flex;
+        width: 100%;
+        margin-top: -20px;
+        justify-content: space-between;
+      }
+      .tab {
+        display: inline-block;
+        margin-left: 40px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container" style="width: 80%">
+      <div class="images">
+        <img src="http://localhost:5000/image3.png" class="img1" />
+      </div>
+      <div class="header">
+        <h6>Travel Clinic Risk Asses</h6>
+        <h6 style="float: right">Date: <%- data.date %></h6>
+      </div>
+
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col" colspan="2">Pateint Personal Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Title: &nbsp;<%- data.title %></td>
+            <td rowspan="2">Pateint Address: &nbsp;<%- data.paddress %></td>
+          </tr>
+          <tr>
+            <td>Name: &nbsp; <%- data.name %></td>
+          </tr>
+          <tr>
+            <td>Surname: &nbsp; <%- data.surname %></td>
+            <td rowspan="2">GD Name and Address: &nbsp; <%- data.GNA %></td>
+          </tr>
+          <tr>
+            <td>Email: &nbsp; <%- data.email %></td>
+          </tr>
+          <tr>
+            <td>Mobile: &nbsp; <%- data.mobile %></td>
+            <td rowspan="2">
+              Would you like your GP to notified of this consultation? <br />
+              <%- data.gpnotified %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Gender: &nbsp; <%- data.gender %>
+              <span class="tab"></span>D.O.B: &nbsp; <%- data.dob %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col" colspan="3">
+              Dates, itinerary and purpose of trip
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Date of departure: &nbsp; <%- data.dod %></td>
+            <td colspan="2">
+              Return date or overall length: &nbsp; <%- data.returndate %>/td>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Countries to be visited</td>
+            <td>Length of stay</td>
+            <td>Remote?Trek?Medical access?Attitude?</td>
+          </tr>
+          <tr>
+            <th scope="row">1: &nbsp; <%- data.country_1 %></th>
+            <td><%- data.country_1_stay %></td>
+            <td><%- data.country_1_remote %></td>
+          </tr>
+          <tr>
+            <th scope="row">2 &nbsp; <%- data.country_2 %></th>
+            <td><%- data.country_2_stay %></td>
+            <td><%- data.country_2_remote %></td>
+          </tr>
+          <tr>
+            <th scope="row">3 &nbsp; <%- data.country_3 %></th>
+            <td><%- data.country_3_stay %></td>
+            <td><%- data.country_3_remote %></td>
+          </tr>
+          <tr>
+            <th scope="row">4 &nbsp; <%- data.country_4 %></th>
+            <td><%- data.country_4_stay %></td>
+            <td><%- data.country_4_remote %></td>
+          </tr>
+          <tr>
+            <th scope="row">5</th>
+            <td></td>
+            <td>Mode of transport: &nbsp; <%- data.modeoft %></td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col" colspan="3">Personal Medical History</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Tick which of the following applies to you</td>
+            <td>Yes</td>
+            <td>No</td>
+            <td>Details (reconfirmed at each appointment)</td>
+          </tr>
+          <tr>
+            <td>Are you feeling well today?</td>
+            <% if (data.feel_well_today === "yes") { %>
+            <td><input type="checkbox" checked /></td>
+            <td><input type="checkbox" /></td>
+            <% } else { %>
+            <td><input type="checkbox" /></td>
+            <td><input type="checkbox" checked /></td>
+            <% } %>
+            <td><%- data.feel_well_details %></td>
+          </tr>
+          <tr>
+            <td>Have you had any immunisations in the past 4 weeks?</td>
+            <% if (data.immunisation === "yes") { %>
+            <td><input type="checkbox" checked /></td>
+            <td><input type="checkbox" /></td>
+            <% } else { %>
+            <td><input type="checkbox" /></td>
+            <td><input type="checkbox" checked /></td>
+            <% } %>
+            <td><%- data.immunisation_details %></td>
+          </tr>
+          <tr>
+            <td>Do you have any recent or past medical history of note?</td>
+            <% if (data.recent_or_past === "yes") { %>
+            <td><input type="checkbox" checked /></td>
+            <td><input type="checkbox" /></td>
+            <% } else { %>
+            <td><input type="checkbox" /></td>
+            <td><input type="checkbox" checked /></td>
+            <% } %>
+            <td><%- data.recent_or_past_details %></td>
+          </tr>
+          <tr>
+            <td>
+              Do you take any current or repeat medicines or are you taking
+              halofantrine?
+            </td>
+            <% if (data.current_or_repeat === "yes") { %>
+            <td><input type="checkbox" checked /></td>
+            <td><input type="checkbox" /></td>
+            <% } else { %>
+            <td><input type="checkbox" /></td>
+            <td><input type="checkbox" checked /></td>
+            <% } %>
+            <td><%- data.current_or_repeat_details %></td>
+          </tr>
+          <tr>
+            <td>Do you have any allergies to any medicines, latex or eggs?</td>
+
+            <% if (data.allergies === "yes") { %>
+            <td><input type="checkbox" checked /></td>
+            <td><input type="checkbox" /></td>
+            <% } else { %>
+            <td><input type="checkbox" /></td>
+            <td><input type="checkbox" checked /></td>
+            <% } %>
+            <td><%- data.allergies_details %></td>
+          </tr>
+          <tr>
+            <td>
+              Have you had a serious reaction to a vaccine, antimalarial or
+              doxycycline before?
+            </td>
+
+            <% if (data.reaction === "yes") { %>
+            <td><input type="checkbox" checked /></td>
+            <td><input type="checkbox" /></td>
+            <% } else { %>
+            <td><input type="checkbox" /></td>
+            <td><input type="checkbox" checked /></td>
+            <% } %>
+            <td><%- data.reaction_details %></td>
+          </tr>
+          <tr>
+            <td>
+              Do you known if you are hypersensitive to mefloquine or related
+              compounds (e.g. quinine, quinidine) or excipients?
+            </td>
+
+            <% if (data.hypersensitive === "yes") { %>
+            <td><input type="checkbox" checked /></td>
+            <td><input type="checkbox" /></td>
+            <% } else { %>
+            <td><input type="checkbox" /></td>
+            <td><input type="checkbox" checked /></td>
+            <% } %>
+            <td><%- data.hypersensitive_details %></td>
+          </tr>
+          <tr>
+            <td>Do you or any of your family suffer from epilepsy?</td>
+
+            <% if (data.family_suffer === "yes") { %>
+            <td><input type="checkbox" checked /></td>
+            <td><input type="checkbox" /></td>
+            <% } else { %>
+            <td><input type="checkbox" /></td>
+            <td><input type="checkbox" checked /></td>
+            <% } %>
+            <td><%- data.family_suffer_details %></td>
+          </tr>
+          <tr>
+            <td>Do you have a past history of black water fever?</td>
+
+            <% if (data.past_history === "yes") { %>
+            <td><input type="checkbox" checked /></td>
+            <td><input type="checkbox" /></td>
+            <% } else { %>
+            <td><input type="checkbox" /></td>
+            <td><input type="checkbox" checked /></td>
+            <% } %>
+            <td><%- data.past_history_details %></td>
+          </tr>
+          <tr>
+            <td>Do you have severe impairment of liver function?</td>
+
+            <% if (data.impairment === "yes") { %>
+            <td><input type="checkbox" checked /></td>
+            <td><input type="checkbox" /></td>
+            <% } else { %>
+            <td><input type="checkbox" /></td>
+            <td><input type="checkbox" checked /></td>
+            <% } %>
+            <td><%- data.impairment_details %></td>
+          </tr>
+          <tr>
+            <td>
+              Do you suffer from any blood disorders such as thalassemia or
+              sickle cell anaemia?
+            </td>
+
+            <% if (data.anaemia === "yes") { %>
+            <td><input type="checkbox" checked /></td>
+            <td><input type="checkbox" /></td>
+            <% } else { %>
+            <td><input type="checkbox" /></td>
+            <td><input type="checkbox" checked /></td>
+            <% } %>
+            <td><%- data.anaemia_details %></td>
+          </tr>
+          <tr>
+            <td>
+              Have you recently undergone radiotherapy, chemotherapy, steroids
+              treatment?
+            </td>
+
+            <% if (data.radiotherapy === "yes") { %>
+            <td><input type="checkbox" checked /></td>
+            <td><input type="checkbox" /></td>
+            <% } else { %>
+            <td><input type="checkbox" /></td>
+            <td><input type="checkbox" checked /></td>
+            <% } %>
+            <td><%- data.radiotherapy_details %></td>
+          </tr>
+          <tr>
+            <td>
+              Do you have any history of the following: anxiety, depression,
+              heart, lung, spleen, liver, kidney, immunity, blood conditions,
+              disorders, diabetes, immunity, HIV-AIDs?
+            </td>
+
+            <% if (data.have_any_history === "yes") { %>
+            <td><input type="checkbox" checked /></td>
+            <td><input type="checkbox" /></td>
+            <% } else { %>
+            <td><input type="checkbox" /></td>
+            <td><input type="checkbox" checked /></td>
+            <% } %>
+            <td><%- data.have_any_history_details %></td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col" colspan="3">Vaccination history</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="3">
+              Have you had a vaccine, antimalarial or doxycycline before?
+              (Please add dates)
+            </td>
+          </tr>
+          <tr>
+            <td>Dip Tet Polio &nbsp; <%- data.dtp %></td>
+            <td>Typhoid &nbsp; <%- data.typhd %></td>
+            <td>Hepatitis A &nbsp; <%- data.hepA %></td>
+          </tr>
+          <tr>
+            <td>Hepatitis B &nbsp; <%- data.hepB %></td>
+            <td>Meningitis &nbsp; <%- data.meni %></td>
+            <td>Yellow Fever &nbsp; <%- data.yellowf %></td>
+          </tr>
+          <tr>
+            <td>Rabies&nbsp; <%- data.rabies %></td>
+            <td>Jap B Encephalitis &nbsp; <%- data.japB %></td>
+            <td>Influenza &nbsp; <%- data.influ %></td>
+          </tr>
+          <tr>
+            <td>Shingles &nbsp; <%- data.shingles %></td>
+            <td>Meningitis B &nbsp; <%- data.meniB %></td>
+            <td>Tick Borne Encephalitis &nbsp; <%- data.tickBE %></td>
+          </tr>
+          <tr>
+            <td>MMR &nbsp; <%- data.mmr %></td>
+            <td>Chickenpox &nbsp; <%- data.chknpx %></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Other&nbsp; <%- data.others %></td>
+            <td colspan="2">Malaria Tablets&nbsp; <%- data.malaria %></td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col" colspan="3">Women Only</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Tick which of the following applies to you</td>
+            <td>Yes</td>
+            <td>Details (reconfirmed at each appointment)</td>
+          </tr>
+          <tr>
+            <td>Are you pregnant or planning a pregnancy?</td>
+            <% if (data.pregnancy === "yes") { %>
+            <td><input type="checkbox" checked /></td>
+            <% } else { %>
+            <td><input type="checkbox" /></td>
+            <% } %>
+            <td><%- data.pregnancy_details %></td>
+          </tr>
+          <tr>
+            <td>Are you breastfeeding?</td>
+            <% if (data.breastfeeding === "yes") { %>
+            <td><input type="checkbox" checked /></td>
+            <% } else { %>
+            <td><input type="checkbox" /></td>
+            <% } %>
+            <td><%- data.breastfeeding_details %></td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col" colspan="3">
+              Please write below any further information which may be relevant
+              e.g. medicines, conditions...
+            </th>
+          </tr>
+        </thead>
+      </table>
+      <h6>FOR OFFICIAL USE</h6>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Vaccine</th>
+            <th scope="col">Consultation 1</th>
+            <th scope="col">Consultation 2</th>
+            <th scope="col">Consultation 3</th>
+            <th scope="col">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Dip / Tet / Polio</td>
+            <td><%- data.dtp_con_1 %></td>
+            <td><%- data.dtp_con_2 %></td>
+            <td><%- data.dtp_con_3 %></td>
+            <td><%- data.dtp_price %></td>
+          </tr>
+          <tr>
+            <td>Typhoid</td>
+            <td><%- data.typh_con_1 %></td>
+            <td><%- data.typh_con_2 %></td>
+            <td><%- data.typh_con_3 %></td>
+            <td><%- data.typh_price %></td>
+          </tr>
+          <tr>
+            <td>Hepatitis A</td>
+            <td><%- data.hepA_con_1 %></td>
+            <td><%- data.hepA_con_2 %></td>
+            <td><%- data.hepA_con_3 %></td>
+            <td><%- data.hepA_price %></td>
+          </tr>
+          <tr>
+            <td>Hepatitis B</td>
+            <td><%- data.hepB_con_1 %></td>
+            <td><%- data.hepB_con_2 %></td>
+            <td><%- data.hepB_con_3 %></td>
+            <td><%- data.hepB_price %></td>
+          </tr>
+          <tr>
+            <td>Meningitis</td>
+            <td><%- data.meni_con_1 %></td>
+            <td><%- data.meni_con_2 %></td>
+            <td><%- data.meni_con_3 %></td>
+            <td><%- data.meni_price %></td>
+          </tr>
+          <tr>
+            <td>Rabies</td>
+            <td><%- data.rebies_con_1 %></td>
+            <td><%- data.rebies_con_2 %></td>
+            <td><%- data.rebies_con_3 %></td>
+            <td><%- data.rebies_price %></td>
+          </tr>
+          <tr>
+            <td>Cholera</td>
+            <td><%- data.cholera_con_1 %></td>
+            <td><%- data.cholera_con_2 %></td>
+            <td><%- data.cholera_con_3 %></td>
+            <td><%- data.cholera_price %></td>
+          </tr>
+          <tr>
+            <td>Yellow Fever</td>
+            <td><%- data.yellowf_con_1 %></td>
+            <td><%- data.yellowf_con_2 %></td>
+            <td><%- data.yellowf_con_3 %></td>
+            <td><%- data.yellowf_price %></td>
+          </tr>
+          <tr>
+            <td>Other &nbsp;<%- data.other_off %></td>
+            <td><%- data.other_off_con_1 %></td>
+            <td><%- data.other_off_con_2 %></td>
+            <td><%- data.other_off_con_3 %></td>
+            <td><%- data.other_off_price %></td>
+          </tr>
+          <tr>
+            <td>Other &nbsp;<%- data.other_off_2 %></td>
+            <td><%- data.other_off_2_con_1 %></td>
+            <td><%- data.other_off_2_con_2 %></td>
+            <td><%- data.other_off_2_con_3 %></td>
+            <td><%- data.other_off_2_price %></td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Malaria Oral Medicine</th>
+            <th scope="col">Date</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Details</th>
+            <th scope="col">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Atovaquone + Proguanil</td>
+            <td><%- data.atpr_date %></td>
+            <td><%- data.atpr_quantity %></td>
+            <td><%- data.atpr_details %></td>
+            <td><%- data.atpr_price %></td>
+          </tr>
+          <tr>
+            <td>Lariam (mefloquine)</td>
+            <td><%- data.larm_date %></td>
+            <td><%- data.larm_quantity %></td>
+            <td><%- data.larm_details %></td>
+            <td><%- data.larm_price %></td>
+          </tr>
+          <tr>
+            <td>Doxycycline</td>
+            <td><%- data.doxy_date %></td>
+            <td><%- data.doxy_quantity %></td>
+            <td><%- data.doxy_details %></td>
+            <td><%- data.doxy_price %></td>
+          </tr>
+          <tr>
+            <td>Paludrine (chloroquine + proguanil)</td>
+            <td><%- data.pal_date %></td>
+            <td><%- data.pal_quantity %></td>
+            <td><%- data.pal_details %></td>
+            <td><%- data.pal_price %></td>
+          </tr>
+          <tr>
+            <td>Chloroquine</td>
+            <td><%- data.chloro_date %></td>
+            <td><%- data.chloro_quantity %></td>
+            <td><%- data.chloro_details %></td>
+            <td><%- data.chloro_price %></td>
+          </tr>
+        </tbody>
+      </table>
+      <h6 style="float: right">Total Price &nbsp; <%- data.total_price %></h6>
+      <br />
+      <h6>Additional travel advice: &nbsp; <%- data.add_travel_advice %></h6>
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <td>Water and personal hygiene</td>
+            <td>
+              <% if (data.water_personal === "yes") { %>
+              <input type="checkbox" checked />
+              <% } else { %>
+              <input type="checkbox" />
+              <% } %>
+            </td>
+            <td>Travellers diarrhoea</td>
+            <td>
+              <% if (data.travellers_diarrhoea === "yes") { %>
+              <input type="checkbox" checked />
+              <% } else { %>
+              <input type="checkbox" />
+              <% } %>
+            </td>
+            <td>Hepatitis B and HIV</td>
+            <td>
+              <% if (data.hepB_HIV === "yes") { %>
+              <input type="checkbox" checked />
+              <% } else { %>
+              <input type="checkbox" />
+              <% } %>
+            </td>
+          </tr>
+          <tr>
+            <td>Insect bite prevention</td>
+            <td>
+              <% if (data.insect_bite === "yes") { %>
+              <input type="checkbox" checked />
+              <% } else { %>
+              <input type="checkbox" />
+              <% } %>
+            </td>
+            <td>Animal bites</td>
+            <td>
+              <% if (data.animal_bite === "yes") { %>
+              <input type="checkbox" checked />
+              <% } else { %>
+              <input type="checkbox" />
+              <% } %>
+            </td>
+            <td>Accidents</td>
+            <td>
+              <% if (data.accidents === "yes") { %>
+              <input type="checkbox" checked />
+              <% } else { %>
+              <input type="checkbox" />
+              <% } %>
+            </td>
+          </tr>
+          <tr>
+            <td>Insurance</td>
+            <td>
+              <% if (data.insurance === "yes") { %>
+              <input type="checkbox" checked />
+              <% } else { %>
+              <input type="checkbox" />
+              <% } %>
+            </td>
+            <td>Air travel</td>
+            <td>
+              <% if (data.air_travel === "yes") { %>
+              <input type="checkbox" checked />
+              <% } else { %>
+              <input type="checkbox" />
+              <% } %>
+            </td>
+            <td>Sun and heat protection</td>
+            <td>
+              <% if (data.sun_and_heat === "yes") { %>
+              <input type="checkbox" checked />
+              <% } else { %>
+              <input type="checkbox" />
+              <% } %>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="6" style="height: 120px">
+              Notes: &nbsp;<%- data.notes %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <hr style="border: 2px solid #111" />
+      <h6>PATIENT CONSENT</h6>
+      <p style="text-align: justify">
+        I have received information on the risks and benefits of the medicines
+        recommended and fully understand them. I have also had the opportunity
+        to ask questions. I consent to the recommended medicines being given at
+        each appointment. Patient / Guardian
+        signature....................................../............................................/.......................................
+        Date............................. Pharmacist's
+        signature.............................................../.........................................../........................................
+        Date............................. Do you consent for our pharmacy and/or
+        our authorising medical agency to contact you regarding customer
+        satisfaction? Yes / No
+      </p>
+    </div>
+  </body>
+</html>

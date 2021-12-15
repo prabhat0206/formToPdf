@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Form</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        margin: auto;
+      }
+      .images {
+        display: flex;
+        justify-content: center;
+        float: left;
+      }
+      .img1 {
+        width: 400px;
+        margin: 50px 30px;
+      }
+      .sign {
+        margin-top: 50px;
+      }
+      .img2 {
+        width: 250px;
+        height: 80px;
+        margin: 30px 20px;
+      }
+      .header {
+        display: flex;
+        width: 100%;
+        margin-top: -20px;
+        justify-content: space-between;
+      }
+      .tab {
+        display: inline-block;
+        margin-left: 40px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <form class="container" style="width: 80%">
+      <div class="images">
+        <img src="http://localhost:5000/image3.png" class="img1" />
+      </div>
+      <div class="header">
+        <h6>Travel Clinic Risk Asses</h6>
+        <h6>
+          <div class="d-flex justify-content-center align-items-center">
+            Date:<input type="date" class="form-control" name="formdate" />
+          </div>
+        </h6>
+      </div>
+
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col" colspan="2">Pateint Personal Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Title: <%- data.title%></td>
+            <td rowspan="2">
+              Pateint Address:
+              <textarea
+                type="text"
+                name="patientaddress"
+                class="form-control"
+              ></textarea>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Name:
+              <input type="text" name="name" class="form-control" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Surname: <input type="text" name="sname" class="form-control" />
+            </td>
+            <td rowspan="2">
+              GD Name and Address:
+              <textarea type="text" name="gna" class="form-control"></textarea>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Email: <input type="email" name="email" class="form-control" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Mobile: <input type="number" name="mobile" class="form-control" />
+            </td>
+            <td rowspan="2">
+              Would you like your GP to notified of this consultation?
+              <input type="checkbox" name="notify" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Gender: <span class="tab"></span>M:
+              <input name="gender" id="male" type="checkbox" value="male" />
+              <script>
+                document
+                  .getElementById("male")
+                  .addEventListener("change", () => {
+                    console.log(document.getElementById("male").value);
+                  });
+              </script>
+              <span class="tab"></span>F:
+              <input name="gender" type="checkbox" value="female" />
+              <span class="tab"></span>
+              <div class="d-flex justify-content-center align-items-center">
+                D.O.B:<input type="date" class="form-control" name="formdate" />
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col" colspan="3">
+              Dates, itinerary and purpose of trip
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="d-flex justify-content-center align-items-center">
+                Date of departure:&nbsp;<input
+                  type="text"
+                  class="form-control"
+                  name="formdate"
+                />
+              </div>
+            </td>
+            <td colspan="2">
+              <div class="d-flex justify-content-center align-items-center">
+                Return date or overall length:&nbsp;<input
+                  type="text"
+                  class="form-control"
+                  name="formdate"
+                />
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Countries to be visited</td>
+            <td>Length of stay</td>
+            <td>Remote?Trek?Medical access?Attitude?</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <div class="d-flex justify-content-center align-items-center">
+                1:&nbsp;<input
+                  type="text"
+                  class="form-control"
+                  name="formdate"
+                />
+              </div>
+            </th>
+            <td><input type="text" class="form-control" /></td>
+            <td><Input type="text" class="form-control" /></td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <div class="d-flex justify-content-center align-items-center">
+                2:&nbsp;<input
+                  type="text"
+                  class="form-control"
+                  name="formdate"
+                />
+              </div>
+            </th>
+            <td><input type="text" class="form-control" /></td>
+            <td><Input type="text" class="form-control" /></td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <div class="d-flex justify-content-center align-items-center">
+                3:&nbsp;<input
+                  type="text"
+                  class="form-control"
+                  name="formdate"
+                />
+              </div>
+            </th>
+            <td><input type="text" class="form-control" /></td>
+            <td><Input type="text" class="form-control" /></td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <div class="d-flex justify-content-center align-items-center">
+                4:&nbsp;<input
+                  type="text"
+                  class="form-control"
+                  name="formdate"
+                />
+              </div>
+            </th>
+            <td><input type="text" class="form-control" /></td>
+            <td><Input type="text" class="form-control" /></td>
+          </tr>
+          <tr>
+            <th scope="row">5</th>
+            <td></td>
+            <td>
+              <div class="d-flex justify-content-center align-items-center">
+                Mode of transport:&nbsp;<input
+                  type="text"
+                  class="form-control"
+                  name="formdate"
+                />
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col" colspan="3">Personal Medical History</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Tick which of the following applies to you</td>
+            <td>Yes</td>
+            <td>No</td>
+            <td>Details (reconfirmed at each appointment)</td>
+          </tr>
+          <tr>
+            <td>Are you feeling well today?</td>
+            <td><input type="checkbox" /></td>
+            <td><input type="checkbox" /></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Have you had any immunisations in the past 4 weeks?</td>
+            <td><input type="checkbox" /></td>
+            <td><input type="checkbox" /></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Do you have any recent or past medical history of note?</td>
+            <td><input type="checkbox" /></td>
+            <td><input type="checkbox" /></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>
+              Do you take any current or repeat medicines or are you taking
+              halofantrine?
+            </td>
+            <td><input type="checkbox" /></td>
+            <td><input type="checkbox" /></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Do you have any allergies to any medicines, latex or eggs?</td>
+            <td><input type="checkbox" /></td>
+            <td><input type="checkbox" /></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>
+              Have you had a serious reaction to a vaccine, antimalarial or
+              doxycycline before?
+            </td>
+            <td><input type="checkbox" /></td>
+            <td><input type="checkbox" /></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>
+              Do you known if you are hypersensitive to mefloquine or related
+              compounds (e.g. quinine, quinidine) or excipients?
+            </td>
+            <td><input type="checkbox" /></td>
+            <td><input type="checkbox" /></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Do you or any of your family suffer from epilepsy?</td>
+            <td><input type="checkbox" /></td>
+            <td><input type="checkbox" /></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Do you have a past history of black water fever?</td>
+            <td><input type="checkbox" /></td>
+            <td><input type="checkbox" /></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Do you have severe impairment of liver function?</td>
+            <td><input type="checkbox" /></td>
+            <td><input type="checkbox" /></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>
+              Do you suffer from any blood disorders such as thalassemia or
+              sickle cell anaemia?
+            </td>
+            <td><input type="checkbox" /></td>
+            <td><input type="checkbox" /></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>
+              Have you recently undergone radiotherapy, chemotherapy, steroids
+              treatment?
+            </td>
+            <td><input type="checkbox" /></td>
+            <td><input type="checkbox" /></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>
+              Do you have any history of the following: anxiety, depression,
+              heart, lung, spleen, liver, kidney, immunity, blood conditions,
+              disorders, diabetes, immunity, HIV-AIDs?
+            </td>
+            <td><input type="checkbox" /></td>
+            <td><input type="checkbox" /></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col" colspan="3">Vaccination history</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="3">
+              Have you had a vaccine, antimalarial or doxycycline before?
+              (Please add dates)
+            </td>
+          </tr>
+          <tr>
+            <td>Dip Tet Polio</td>
+            <td>Typhoid</td>
+            <td>Hepatitis A</td>
+          </tr>
+          <tr>
+            <td>Hepatitis B</td>
+            <td>Meningitis</td>
+            <td>Yellow Fever</td>
+          </tr>
+          <tr>
+            <td>Rabies</td>
+            <td>Jap B Encephalitis</td>
+            <td>Influenza</td>
+          </tr>
+          <tr>
+            <td>Shingles</td>
+            <td>Meningitis B</td>
+            <td>Tick Borne Encephalitis</td>
+          </tr>
+          <tr>
+            <td>MMR</td>
+            <td>Chickenpox</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Other…………………………………………………………..</td>
+            <td colspan="2">
+              Malaria Tablets…………………………………………………………………………………………
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col" colspan="3">Women Only</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Tick which of the following applies to you</td>
+            <td>Yes</td>
+            <td>No</td>
+            <td>Details (reconfirmed at each appointment)</td>
+          </tr>
+          <tr>
+            <td>Are you pregnant or planning a pregnancy?</td>
+            <td><input type="checkbox" /></td>
+            <td><input type="checkbox" /></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Are you breastfeeding?</td>
+            <td><input type="checkbox" /></td>
+            <td><input type="checkbox" /></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col" colspan="3">
+              Please write below any further information which may be relevant
+              e.g. medicines, conditions...
+            </th>
+          </tr>
+        </thead>
+      </table>
+      <h6>FOR OFFICIAL USE</h6>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Vaccine</th>
+            <th scope="col">Consultation 1</th>
+            <th scope="col">Consultation 2</th>
+            <th scope="col">Consultation 3</th>
+            <th scope="col">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Dip / Tet / Polio</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Typhoid</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Hepatitis A</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Hepatitis B</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Meningitis</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Rabies</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Cholera</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Rabies</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Yellow Fever</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Other ................</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Other ................</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Malaria Oral Medicine</th>
+            <th scope="col">Date</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Details</th>
+            <th scope="col">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Atovaquone + Proguanil</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Lariam (mefloquine)</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Doxycycline</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Paludrine (chloroquine + proguanil)</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Chloroquine</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      <h6 style="float: right">Total Price………………..</h6>
+      <br />
+      <h6>Additional travel advice:</h6>
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <td>Water and personal hygiene</td>
+            <td><input type="checkbox" /></td>
+            <td>Travellers’ diarrhoea</td>
+            <td><input type="checkbox" /></td>
+            <td>Hepatitis B and HIV</td>
+            <td><input type="checkbox" /></td>
+          </tr>
+          <tr>
+            <td>Insect bite prevention</td>
+            <td><input type="checkbox" /></td>
+            <td>Animal bites</td>
+            <td><input type="checkbox" /></td>
+            <td>Accidents</td>
+            <td><input type="checkbox" /></td>
+          </tr>
+          <tr>
+            <td>Insurance</td>
+            <td><input type="checkbox" /></td>
+            <td>Air travel</td>
+            <td><input type="checkbox" /></td>
+            <td>Sun and heat protection</td>
+            <td><input type="checkbox" /></td>
+          </tr>
+          <tr>
+            <td colspan="6" style="height: 120px">Notes:</td>
+          </tr>
+        </tbody>
+      </table>
+      <hr style="border: 2px solid #111" />
+      <h6>PATIENT CONSENT</h6>
+      <p style="text-align: justify">
+        I have received information on the risks and benefits of the medicines
+        recommended and fully understand them. I have also had the opportunity
+        to ask questions. I consent to the recommended medicines being given at
+        each appointment. Patient / Guardian
+        signature....................................../............................................/.......................................
+        Date............................. Pharmacist's
+        signature.............................................../.........................................../........................................
+        Date............................. Do you consent for our pharmacy and/or
+        our authorising medical agency to contact you regarding customer
+        satisfaction? Yes / No
+      </p>
+
+      <button type="submit" class="btn btn-primary"></button>
+    </form>
+  </body>
+</html>
